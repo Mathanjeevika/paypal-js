@@ -245,7 +245,6 @@ interface CoreSdkScriptDataAttributes {
 
 export interface LoadCoreSdkScriptOptions extends CoreSdkScriptDataAttributes {
   environment?: "production" | "sandbox";
-  sdkBaseUrl?: string;
   debug?: boolean;
 }
 

@@ -203,7 +203,6 @@ export const PayPalProvider: React.FC<PayPalProviderProps> = ({
           dataNamespace: loadCoreScriptOptions.current.dataNamespace,
           dataSdkIntegrationSource:
             loadCoreScriptOptions.current.dataSdkIntegrationSource,
-          sdkBaseUrl: loadCoreScriptOptions.current.sdkBaseUrl,
         });
 
         if (sdkNamespace && isSubscribed) {

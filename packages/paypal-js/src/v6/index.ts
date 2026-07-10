@@ -21,7 +21,7 @@ function loadCoreSdkScript(options: LoadCoreSdkScriptOptions) {
     return Promise.resolve(null);
   }
 
-  const { environment, debug, dataNamespace, dataSdkIntegrationSource, sdkBaseUrl } =
+  const { environment, debug, dataNamespace, dataSdkIntegrationSource } =
     options;
   const namespace = dataNamespace ?? "paypal";
   const paypalWindowReference = getPayPalWindowNamespace(namespace);
@@ -30,10 +30,9 @@ function loadCoreSdkScript(options: LoadCoreSdkScriptOptions) {
   }
 
   const baseURL =
-    sdkBaseUrl ??
-    (environment === "production"
+    environment === "production"
       ? "https://www.paypal.com"
-      : "https://www.sandbox.paypal.com");
+      : "https://www.sandbox.paypal.com";
   const url = new URL("/web-sdk/v6/core", baseURL);
 
   if (debug) {
