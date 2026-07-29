@@ -76,6 +76,8 @@ describe("LPM_REGISTRY", () => {
       "expiryDate",
       "dateOfBirth",
       "numberOfInstallments",
+      "bic",
+      "identification",
     ]);
 
     for (const [lpmKey, config] of Object.entries(LPM_REGISTRY)) {
@@ -94,11 +96,18 @@ describe("LPM_REGISTRY", () => {
           expect(config.sessionFields).toContain("dateOfBirth");
           expect(config.sessionFields).toContain("numberOfInstallments");
         }
+        if (lpmKey === "pse") {
+          expect(config.sessionFields).toContain("bic");
+          expect(config.sessionFields).toContain("identification");
+        }
+        if (lpmKey === "nequi") {
+          expect(config.sessionFields).toContain("identification");
+        }
       }
     }
   });
 
-  test("has exactly 50 LPM entries", () => {
-    expect(Object.keys(LPM_REGISTRY)).toHaveLength(50);
+  test("has exactly 72 LPM entries", () => {
+    expect(Object.keys(LPM_REGISTRY)).toHaveLength(72);
   });
 });

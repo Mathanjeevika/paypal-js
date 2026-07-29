@@ -33,6 +33,11 @@ export type LPMSessionFieldTaxInfo = {
   taxIdType: string;
 };
 
+export type LPMSessionFieldIdentification = {
+  type: string;
+  value: string;
+};
+
 /**
  * Optional session-level inputs collected by the merchant and forwarded to the
  * SDK when starting an LPM payment session. Only a subset of fields is required
@@ -45,6 +50,8 @@ export type LPMSessionFields = {
   expiryDate?: string;
   dateOfBirth?: string;
   numberOfInstallments?: number;
+  bic?: string;
+  identification?: LPMSessionFieldIdentification;
 };
 
 /**
@@ -128,7 +135,29 @@ export type LPMComponents =
   | "latviabanks-payments"
   | "fiuu-cash-payments"
   | "lithuaniabanks-payments"
-  | "jeniuspay-payments";
+  | "jeniuspay-payments"
+  | "airtelkenya-payments"
+  | "airtel-tanzania-payments"
+  | "pesalink-payments"
+  | "halopesa-payments"
+  | "spei-payments"
+  | "picpay-payments"
+  | "nigeria-banks-payments"
+  | "opay-payments"
+  | "naverpay-payments"
+  | "codi-payments"
+  | "payattitude-payments"
+  | "dimo-payments"
+  | "pse-payments"
+  | "qrph-payments"
+  | "vietqr-payments"
+  | "mixx-by-yas-payments"
+  | "bre-b-payments"
+  | "promptpay-qr-payments"
+  | "nequi-payments"
+  | "truemoney-payments"
+  | "nupay-payments"
+  | "shopeepay-payments";
 
 export type LPMSessionMethodName =
   | "createIdealOneTimePaymentSession"
@@ -180,7 +209,29 @@ export type LPMSessionMethodName =
   | "createLatviaBanksOneTimePaymentSession"
   | "createFIUUOneTimePaymentSession"
   | "createLithuaniaBanksOneTimePaymentSession"
-  | "createJeniuspayOneTimePaymentSession";
+  | "createJeniuspayOneTimePaymentSession"
+  | "createAirtelKenyaOneTimePaymentSession"
+  | "createAirtelTanzaniaOneTimePaymentSession"
+  | "createPesalinkOneTimePaymentSession"
+  | "createHalopesaOneTimePaymentSession"
+  | "createSpeiOneTimePaymentSession"
+  | "createPicpayOneTimePaymentSession"
+  | "createNigeriaBanksOneTimePaymentSession"
+  | "createOpayOneTimePaymentSession"
+  | "createNaverpayOneTimePaymentSession"
+  | "createCodiOneTimePaymentSession"
+  | "createPayattitudeOneTimePaymentSession"
+  | "createDimoOneTimePaymentSession"
+  | "createPseOneTimePaymentSession"
+  | "createQrphOneTimePaymentSession"
+  | "createVietqrOneTimePaymentSession"
+  | "createMixxByYasOneTimePaymentSession"
+  | "createBreBOneTimePaymentSession"
+  | "createPromptpayQrOneTimePaymentSession"
+  | "createNequiOneTimePaymentSession"
+  | "createTruemoneyOneTimePaymentSession"
+  | "createNupayOneTimePaymentSession"
+  | "createShopeepayOneTimePaymentSession";
 
 export type LPMPaymentsInstance = {
   [K in LPMSessionMethodName]?: (
