@@ -33,13 +33,18 @@ import {
   billingAddressArgTypes,
   taxInfoArgTypes,
   floaArgTypes,
+  bicArgTypes,
+  identificationArgTypes,
   defaultPhoneArgs,
   defaultBillingAddressArgs,
   defaultTaxInfoArgs,
   defaultFloaArgs,
+  defaultBicArgs,
+  defaultIdentificationArgs,
   buildPhone,
   buildBillingAddress,
   buildTaxInfo,
+  buildIdentification,
   SAMPLE_FIELD_VALUES,
 } from "./utils";
 
@@ -64,6 +69,11 @@ export type LPMStoryArgs = {
   // floa specific
   dateOfBirth?: string;
   numberOfInstallments?: number;
+  // bic
+  bic?: string;
+  // identification
+  identificationType?: string;
+  identificationValue?: string;
 };
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -106,6 +116,12 @@ function buildSessionExtras(
   if (sessionFields.includes("numberOfInstallments") && args.numberOfInstallments != null) {
     extras.numberOfInstallments = args.numberOfInstallments;
   }
+  if (sessionFields.includes("bic") && args.bic) {
+    extras.bic = args.bic;
+  }
+  if (sessionFields.includes("identification") && args.identificationType && args.identificationValue) {
+    extras.identification = buildIdentification(args.identificationType, args.identificationValue);
+  }
 
   return extras;
 }
@@ -130,6 +146,12 @@ function buildArgTypes(sessionFields: readonly string[]) {
   if (sessionFields.includes("dateOfBirth") || sessionFields.includes("numberOfInstallments")) {
     Object.assign(base, floaArgTypes);
   }
+  if (sessionFields.includes("bic")) {
+    Object.assign(base, bicArgTypes);
+  }
+  if (sessionFields.includes("identification")) {
+    Object.assign(base, identificationArgTypes);
+  }
   return base;
 }
 
@@ -153,6 +175,12 @@ function buildDefaultArgs(sessionFields: readonly string[]): LPMStoryArgs {
   }
   if (sessionFields.includes("dateOfBirth") || sessionFields.includes("numberOfInstallments")) {
     Object.assign(base, defaultFloaArgs);
+  }
+  if (sessionFields.includes("bic")) {
+    Object.assign(base, defaultBicArgs);
+  }
+  if (sessionFields.includes("identification")) {
+    Object.assign(base, defaultIdentificationArgs);
   }
   return base;
 }

@@ -93,6 +93,30 @@ export const floaArgTypes = {
   },
 };
 
+export const bicArgTypes = {
+  bic: {
+    control: { type: "text" as const },
+    description: "Bank Identifier Code (BIC) of the buyer's bank",
+    defaultValue: "BCOLCOBBXXX",
+    table: { category: "Session Fields" },
+  },
+};
+
+export const identificationArgTypes = {
+  identificationType: {
+    control: { type: "text" as const },
+    description: "Type of buyer identification document (e.g. \"CC\" for Cedula de Ciudadania)",
+    defaultValue: "CC",
+    table: { category: "Session Fields" },
+  },
+  identificationValue: {
+    control: { type: "text" as const },
+    description: "Buyer identification document number",
+    defaultValue: "123456789",
+    table: { category: "Session Fields" },
+  },
+};
+
 export const presentationModeArgType = {
   control: { type: "select" as const },
   options: ["auto", "popup"],
@@ -206,6 +230,15 @@ export const defaultFloaArgs = {
   numberOfInstallments: 3,
 };
 
+export const defaultBicArgs = {
+  bic: "BCOLCOBBXXX",
+};
+
+export const defaultIdentificationArgs = {
+  identificationType: "CC",
+  identificationValue: "123456789",
+};
+
 // ─── Helpers to reconstruct structured session field values from flat args ───
 
 export function buildPhone(
@@ -235,4 +268,8 @@ export function buildBillingAddress(args: {
 
 export function buildTaxInfo(taxId: string, taxIdType: string) {
   return { taxId, taxIdType };
+}
+
+export function buildIdentification(type: string, value: string) {
+  return { type, value };
 }

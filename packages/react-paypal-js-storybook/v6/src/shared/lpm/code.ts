@@ -63,6 +63,12 @@ function buildSessionFieldsReturnClause(sessionFields: readonly string[]): strin
   if (sessionFields.includes("expiryDate")) {
     lines.push("        expiryDate: \"2025-12\",");
   }
+  if (sessionFields.includes("bic")) {
+    lines.push("        bic: \"BCOLCOBBXXX\",");
+  }
+  if (sessionFields.includes("identification")) {
+    lines.push("        identification: { type: \"CC\", value: \"123456789\" },");
+  }
 
   return lines.length ? `\n${lines.join("\n")}` : "";
 }
@@ -94,6 +100,12 @@ function buildSessionFieldPropsClause(sessionFields: readonly string[]): string 
   }
   if (sessionFields.includes("expiryDate")) {
     lines.push("            expiryDate=\"2025-12\"");
+  }
+  if (sessionFields.includes("bic")) {
+    lines.push("            bic=\"BCOLCOBBXXX\"");
+  }
+  if (sessionFields.includes("identification")) {
+    lines.push("            identification={{ type: \"CC\", value: \"123456789\" }}");
   }
   return lines.length ? `\n${lines.join("\n")}` : "";
 }
