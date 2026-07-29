@@ -245,6 +245,12 @@ interface CoreSdkScriptDataAttributes {
 
 export interface LoadCoreSdkScriptOptions extends CoreSdkScriptDataAttributes {
   environment?: "production" | "sandbox";
+  /**
+   * Overrides the host the v6 core SDK script is loaded from, bypassing the
+   * environment-based default. Intended for pointing at a QA/stage test
+   * environment (e.g. "https://www.te-unlimitapm.qa.paypal.com").
+   */
+  sdkBaseUrl?: string;
   debug?: boolean;
 }
 
