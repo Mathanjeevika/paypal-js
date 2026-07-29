@@ -67,7 +67,7 @@ function buildSessionFieldsReturnClause(sessionFields: readonly string[]): strin
     lines.push("        bic: \"BCOLCOBBXXX\",");
   }
   if (sessionFields.includes("identification")) {
-    lines.push("        identification: { type: \"CC\", value: \"123456789\" },");
+    lines.push("        identification: { type: \"CC\", idNumber: \"123456789\" },");
   }
 
   return lines.length ? `\n${lines.join("\n")}` : "";
@@ -105,7 +105,7 @@ function buildSessionFieldPropsClause(sessionFields: readonly string[]): string 
     lines.push("            bic=\"BCOLCOBBXXX\"");
   }
   if (sessionFields.includes("identification")) {
-    lines.push("            identification={{ type: \"CC\", value: \"123456789\" }}");
+    lines.push("            identification={{ type: \"CC\", idNumber: \"123456789\" }}");
   }
   return lines.length ? `\n${lines.join("\n")}` : "";
 }

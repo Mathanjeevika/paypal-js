@@ -270,6 +270,6 @@ export function buildTaxInfo(taxId: string, taxIdType: string) {
   return { taxId, taxIdType };
 }
 
-export function buildIdentification(type: string, value: string) {
-  return { type, value };
+export function buildIdentification(type: string, idNumber: string) {
+  return { type, idNumber };
 }
